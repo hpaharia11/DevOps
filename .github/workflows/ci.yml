@@ -1,0 +1,46 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build-and-test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+        
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+      
+    - name: Build docker image
+      run: docker build -t devops-flask-app .
+`markdown name=README.md
+# DevOps Python Flask Project
+
+This is a simple Python Flask app containerized with Docker and ready for CI/CD via GitHub Actions.
+
+## Features
+
+- Python Flask "Hello World" app
+- Dockerfile for containerization
+- GitHub Actions workflow for building, testing, and Docker image build
+
+## Getting Started
+
+### 1. Run Locally with Docker Desktop
+
+bash
+docker build -t devops-flask-app .
+docker run -p 5000:5000 devops-flask-app
