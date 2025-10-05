@@ -1,2 +1,2 @@
 # DevOps
-This is a basic DevOps project.
+This is a simple Python Flask app.
